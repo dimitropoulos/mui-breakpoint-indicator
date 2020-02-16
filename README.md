@@ -6,11 +6,11 @@
   padding: 1em;
   justify-content: space-between;
 ">
-  <img style="margin: 0 4px" src="media/xs.png">
-  <img style="margin: 0 4px" src="media/sm.png">
-  <img style="margin: 0 4px" src="media/md.png">
-  <img style="margin: 0 4px" src="media/lg.png">
-  <img style="margin: 0 4px" src="media/xl.png">
+  <img style="margin: 0 4px;" src="https://user-images.githubusercontent.com/15232461/74609049-31ea5e80-50b4-11ea-99e8-17ece5945039.png" />
+  <img style="margin: 0 4px;" src="https://user-images.githubusercontent.com/15232461/74608996-b25c8f80-50b3-11ea-8e2a-2370919c9cf3.png" />
+  <img style="margin: 0 4px;" src="https://user-images.githubusercontent.com/15232461/74608993-b092cc00-50b3-11ea-9cad-096c8cc22702.png" />
+  <img style="margin: 0 4px;" src="https://user-images.githubusercontent.com/15232461/74609037-18491700-50b4-11ea-9ffb-77caaf8789e6.png" />
+  <img style="margin: 0 4px;" src="https://user-images.githubusercontent.com/15232461/74608990-ae307200-50b3-11ea-90d4-b123ada134b1.png" />
 </div>
 
 
@@ -105,17 +105,17 @@ The implementation of the `visible` prop is such that passing `visible={false}` 
 
 Simply resize the viewport, and watch the indicator change:
 
-![resize](media/resize.gif)
+![resize](https://user-images.githubusercontent.com/15232461/74608880-d23f8380-50b2-11ea-8412-0fc94c684b71.gif)
 
 ### Click to Rotate
 
 #### Clockwise
 You can click on the helper to temporarily rotate it to the next position, clockwise.
-![clockwise](media/clockwise.gif)
+![clockwise](https://user-images.githubusercontent.com/15232461/74608909-20548700-50b3-11ea-9802-e63951743ab3.gif)
 
 #### Counter-Clockwise
 You can ctrl+click the helper to rotate it counter-clockwise.
-![counterclockwise](media/counterclockwise.gif)
+![counterclockwise](https://user-images.githubusercontent.com/15232461/74608910-22b6e100-50b3-11ea-8d0a-7e693cfd1c5a.gif)
 
 > **NOTE:** When you refresh or rerender your app it will revert to whatever the `position` prop is set to (or the default, `top-center` if none is set), so be sure to just set the `position` prop if you want it to always be in a particular area of the screen.
 
