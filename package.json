@@ -1,0 +1,21 @@
+{
+  "name": "mui-breakpoint-helper",
+  "version": "0.0.1",
+  "description": "shows you your current material-ui breakpoint. tiny. allows default position setting.",
+  "main": "index.js",
+  "author": "Dimitri Mitropoulos <dimitrimitropoulos@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "tsc --declaration"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.9.3",
+    "polished": "^3.4.4",
+    "react": "^16.12.0",
+    "typescript": "^3.7.5"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.19"
+  }
+}
