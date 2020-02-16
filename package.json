@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "author": "Dimitri Mitropoulos <dimitrimitropoulos@gmail.com>",
   "license": "MIT",
+  "repository": "https://github.com/dimitropoulos/mui-breakpoint-helper",
   "private": false,
   "scripts": {
     "prebuild": "rm -rf lib",
