@@ -46,7 +46,7 @@ const getHue = (breakpoint: Breakpoint) => {
   }
 };
 
-type Position =
+export type Position =
   | 'bottom-center'
   | 'bottom-left'
   | 'bottom-right'
@@ -57,8 +57,9 @@ type Position =
   | 'top-right'
   ;
 
-interface BreakpointHelperProps {
+export interface BreakpointHelperProps {
   position?: Position;
+  visible?: boolean;
 }
 
 type PlacementsByPosition = {
@@ -92,7 +93,11 @@ const placementsByPosition: PlacementsByPosition = {
   'top-left': { left: 0, top: 0 },
 };
 
-export const BreakpointHelper: FC<BreakpointHelperProps> = ({ position: suppliedPosition }) => {
+export const BreakpointHelper: FC<BreakpointHelperProps> = ({ visible = true, ...rest }) => (
+  visible ? <InternalBreakpointHelper {...rest} /> : null
+);
+
+const InternalBreakpointHelper: FC<Omit<BreakpointHelperProps, 'visible'>> = ({ position: suppliedPosition }) => {
   const defaultPosition = suppliedPosition || positionOrder[0];
   const [position, setPosition] = useState(defaultPosition);
   const breakpoint = useWidth();

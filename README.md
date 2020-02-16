@@ -25,7 +25,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
-import theme from './path/to/my/theme';
+import { theme } from './path/to/my/theme';
+import { MyApp } from './path/to/MyApp';
 import { configureStore } from './store/configureStore';
 import { Provider } from 'react-redux';
 import { BreakpointHelper } from 'mui-breakpoint-helper';
@@ -46,6 +47,8 @@ ReactDOM.render(
 
 ## How can it be configured?
 
+### the `position` prop [string, defaults to `top-center`]
+
 The `BreakpointHelper` has an optional `position` prop with the following type:
 
 ```ts
@@ -65,6 +68,36 @@ The default is `top-center`, but you can configure the default to whatever posit
 ```tsx
 <BreakpointHelper position="bottom-right" />
 ```
+
+### the `visible` prop [boolean, defaults to `true`]
+
+A common use case is to use a tool like this conditionally, e.g.:
+
+```tsx
+const debugMode = useSelector(selectDebugMode);
+
+return (
+  <div>
+    {debugMode && <BreakpointHelper />}
+    <MyApp />
+  <div>
+)
+```
+
+While you can still do the above, `BreakpointHelper` accepts a `visible` prop (defaults to `true`) where you can pass a debugMode flag, as above:
+
+```tsx
+const debugMode = useSelector(selectDebugMode);
+
+return (
+  <div>
+    <BreakpointHelper debugMode={debugMode} />
+    <MyApp />
+  <div>
+)
+```
+
+The implementation of the `visible` prop is such that passing `visible={false}` is a no-op.
 
 ## How can it be interacted with?
 
