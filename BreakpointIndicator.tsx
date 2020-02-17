@@ -57,7 +57,7 @@ export type Position =
   | 'top-right'
   ;
 
-export interface BreakpointHelperProps {
+export interface BreakpointIndicatorProps {
   position?: Position;
   visible?: boolean;
 }
@@ -93,11 +93,11 @@ const placementsByPosition: PlacementsByPosition = {
   'top-left': { left: 0, top: 0 },
 };
 
-export const BreakpointHelper: FC<BreakpointHelperProps> = ({ visible = true, ...rest }) => (
-  visible ? <InternalBreakpointHelper {...rest} /> : null
+export const BreakpointIndicator: FC<BreakpointIndicatorProps> = ({ visible = true, ...rest }) => (
+  visible ? <InternalBreakpointIndicator {...rest} /> : null
 );
 
-const InternalBreakpointHelper: FC<Omit<BreakpointHelperProps, 'visible'>> = ({ position: suppliedPosition }) => {
+const InternalBreakpointIndicator: FC<Omit<BreakpointIndicatorProps, 'visible'>> = ({ position: suppliedPosition }) => {
   const defaultPosition = suppliedPosition || positionOrder[0];
   const [position, setPosition] = useState(defaultPosition);
   const breakpoint = useWidth();

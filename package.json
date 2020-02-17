@@ -1,11 +1,11 @@
 {
-  "name": "mui-breakpoint-helper",
+  "name": "mui-breakpoint-indicator",
   "version": "0.0.3",
   "description": "shows you your current material-ui breakpoint. tiny. allows default position setting.",
   "main": "lib/index.js",
   "author": "Dimitri Mitropoulos <dimitrimitropoulos@gmail.com>",
   "license": "MIT",
-  "repository": "https://github.com/dimitropoulos/mui-breakpoint-helper",
+  "repository": "https://github.com/dimitropoulos/mui-breakpoint-indicator",
   "private": false,
   "scripts": {
     "prebuild": "rm -rf lib",

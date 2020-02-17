@@ -1,1 +1,1 @@
-export { BreakpointHelper } from './BreakpointHelper';
+export { BreakpointIndicator } from './BreakpointIndicator';

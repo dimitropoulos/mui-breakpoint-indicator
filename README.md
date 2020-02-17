@@ -1,4 +1,4 @@
-# Material-UI Breakpoint Helper
+# Material-UI Breakpoint Indicator
 
 <div style="
   display: flex;
@@ -14,7 +14,7 @@
 </div>
 
 
-When developing responsive applications with material-ui, it's often helpful to be able to easily visualize the current breakpoint.  Enter, `<BreakpointHelper />`.
+When developing responsive applications with material-ui, it's often helpful to be able to easily visualize the current breakpoint.  Enter, `<BreakpointIndicator />`.
 
 ## How does it work?
 
@@ -29,7 +29,7 @@ import { theme } from './path/to/my/theme';
 import { MyApp } from './path/to/MyApp';
 import { configureStore } from './store/configureStore';
 import { Provider } from 'react-redux';
-import { BreakpointHelper } from 'mui-breakpoint-helper';
+import { BreakpointIndicator } from 'mui-breakpoint-indicator';
 
 const store = configureStore();
 
@@ -37,7 +37,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       <CSSBaseline />
-      <BreakpointHelper />
+      <BreakpointIndicator />
       <MyApp />
     </ThemeProvider>
   </Provider>,
@@ -49,7 +49,7 @@ ReactDOM.render(
 
 ### the `position` prop [string, defaults to `top-center`]
 
-The `BreakpointHelper` has an optional `position` prop with the following type:
+The `BreakpointIndicator` has an optional `position` prop with the following type:
 
 ```ts
 type Position =
@@ -66,7 +66,7 @@ type Position =
 
 The default is `top-center`, but you can configure the default to whatever position you prefer, e.g.:
 ```tsx
-<BreakpointHelper position="bottom-right" />
+<BreakpointIndicator position="bottom-right" />
 ```
 
 ### the `visible` prop [boolean, defaults to `true`]
@@ -78,20 +78,20 @@ const debugMode = useSelector(selectDebugMode);
 
 return (
   <div>
-    {debugMode && <BreakpointHelper />}
+    {debugMode && <BreakpointIndicator />}
     <MyApp />
   <div>
 )
 ```
 
-While you can still do the above, `BreakpointHelper` accepts a `visible` prop (defaults to `true`) where you can pass a debugMode flag, as above:
+While you can still do the above, `BreakpointIndicator` accepts a `visible` prop (defaults to `true`) where you can pass a debugMode flag, as above:
 
 ```tsx
 const debugMode = useSelector(selectDebugMode);
 
 return (
   <div>
-    <BreakpointHelper debugMode={debugMode} />
+    <BreakpointIndicator debugMode={debugMode} />
     <MyApp />
   <div>
 )
@@ -110,11 +110,11 @@ Simply resize the viewport, and watch the indicator change:
 ### Click to Rotate
 
 #### Clockwise
-You can click on the helper to temporarily rotate it to the next position, clockwise.
+You can click on the indicator to temporarily rotate it to the next position, clockwise.
 ![clockwise](https://user-images.githubusercontent.com/15232461/74608909-20548700-50b3-11ea-9802-e63951743ab3.gif)
 
 #### Counter-Clockwise
-You can ctrl+click the helper to rotate it counter-clockwise.
+You can ctrl+click the indicator to rotate it counter-clockwise.
 ![counterclockwise](https://user-images.githubusercontent.com/15232461/74608910-22b6e100-50b3-11ea-8d0a-7e693cfd1c5a.gif)
 
 > **NOTE:** When you refresh or rerender your app it will revert to whatever the `position` prop is set to (or the default, `top-center` if none is set), so be sure to just set the `position` prop if you want it to always be in a particular area of the screen.
