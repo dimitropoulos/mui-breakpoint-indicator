@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FC, useState, MouseEventHandler } from 'react';
+import { CSSProperties, FC, useState, MouseEventHandler } from 'react';
 import { hsl, readableColor } from 'polished';
 import { Theme, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -58,6 +58,8 @@ export type Position =
   ;
 
 export interface BreakpointIndicatorProps {
+  className?: string;
+  style?: CSSProperties,
   position?: Position;
   visible?: boolean;
 }
@@ -97,7 +99,11 @@ export const BreakpointIndicator: FC<BreakpointIndicatorProps> = ({ visible = tr
   visible ? <InternalBreakpointIndicator {...rest} /> : null
 );
 
-const InternalBreakpointIndicator: FC<Omit<BreakpointIndicatorProps, 'visible'>> = ({ position: suppliedPosition }) => {
+const InternalBreakpointIndicator: FC<Omit<BreakpointIndicatorProps, 'visible'>> = ({
+  className = '',
+  position: suppliedPosition,
+  style = {},
+}) => {
   const defaultPosition = suppliedPosition || positionOrder[0];
   const [position, setPosition] = useState(defaultPosition);
   const breakpoint = useWidth();
@@ -131,6 +137,7 @@ const InternalBreakpointIndicator: FC<Omit<BreakpointIndicatorProps, 'visible'>>
   return (
     <div
       onClick={onClick}
+      className={className}
       style={{
         backgroundColor,
         border: `2px solid ${color}`,
@@ -140,6 +147,7 @@ const InternalBreakpointIndicator: FC<Omit<BreakpointIndicatorProps, 'visible'>>
         cursor: 'pointer',
         zIndex: 99999,
         ...placementsByPosition[position],
+        ...style,
       }}
     >
       {breakpoint}
