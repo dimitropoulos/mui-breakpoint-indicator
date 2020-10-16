@@ -9,15 +9,18 @@
   "private": false,
   "scripts": {
     "prebuild": "rm -rf lib",
-    "build": "tsc --declaration"
+    "build": "yarn tsc --declaration --skipLibCheck"
   },
   "dependencies": {
-    "@material-ui/core": "^4.9.3",
-    "polished": "^3.4.4",
-    "react": "^16.12.0",
-    "typescript": "^3.7.5"
+    "@material-ui/core": "^4.11.0",
+    "polished": "^4.0.3",
+    "ramda": "^0.27.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "typescript": "^4.0.3"
   },
   "devDependencies": {
-    "@types/react": "^16.9.19"
+    "@types/ramda": "^0.27.28",
+    "@types/react": "^16.9.52"
   }
 }

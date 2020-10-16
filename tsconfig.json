@@ -5,11 +5,9 @@
     "module": "commonjs",
     "strict": true,
     "declaration": false,
+    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "jsx": "react",
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "jsx": "react"
   },
   "include": [
     "**/*.tsx",

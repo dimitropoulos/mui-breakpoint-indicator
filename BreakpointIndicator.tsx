@@ -1,9 +1,8 @@
-import * as React from 'react';
-import { CSSProperties, FC, useState, MouseEventHandler } from 'react';
+import React, { CSSProperties, FC, useState, MouseEventHandler } from 'react';
 import { hsl, readableColor } from 'polished';
-import { Theme, useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { Theme, useTheme, useMediaQuery } from '@material-ui/core';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { reduce, reverse } from 'ramda';
 
 /**
  * taken from https://material-ui.com/components/use-media-query/#migrating-from-withwidth
@@ -14,13 +13,12 @@ import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
  */
 const useWidth = () => {
   const theme: Theme = useTheme();
-  const keys: Breakpoint[] = [...theme.breakpoints.keys].reverse();
   return (
-    keys.reduce((output: (Breakpoint | null), key: Breakpoint) => {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      const matches = useMediaQuery(theme.breakpoints.up(key));
-      return !output && matches ? key : output;
-    }, null) || 'xs'
+    reduce((accumulator: (Breakpoint | null), breakpoint: Breakpoint) => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks -- see above
+      const matches = useMediaQuery(theme.breakpoints.up(breakpoint));
+      return accumulator === null && matches ? breakpoint : accumulator;
+    }, null, reverse(theme.breakpoints.keys)) ?? 'xs'
   );
 };
 
@@ -54,12 +52,10 @@ export type Position =
   | 'right-center'
   | 'top-center'
   | 'top-left'
-  | 'top-right'
-  ;
-
+  | 'top-right';
 export interface BreakpointIndicatorProps {
   className?: string;
-  style?: CSSProperties,
+  style?: CSSProperties;
   position?: Position;
   visible?: boolean;
 }
@@ -82,7 +78,7 @@ const positionOrder: Position[] = [
   'bottom-left',
   'left-center',
   'top-left',
-]
+];
 
 const placementsByPosition: PlacementsByPosition = {
   'top-center': { left: '50%', top: 0 },
@@ -95,16 +91,12 @@ const placementsByPosition: PlacementsByPosition = {
   'top-left': { left: 0, top: 0 },
 };
 
-export const BreakpointIndicator: FC<BreakpointIndicatorProps> = ({ visible = true, ...rest }) => (
-  visible ? <InternalBreakpointIndicator {...rest} /> : null
-);
-
 const InternalBreakpointIndicator: FC<Omit<BreakpointIndicatorProps, 'visible'>> = ({
   className = '',
   position: suppliedPosition,
   style = {},
 }) => {
-  const defaultPosition = suppliedPosition || positionOrder[0];
+  const defaultPosition = suppliedPosition ?? positionOrder[0];
   const [position, setPosition] = useState(defaultPosition);
   const breakpoint = useWidth();
   const hue = getHue(breakpoint);
@@ -121,7 +113,7 @@ const InternalBreakpointIndicator: FC<Omit<BreakpointIndicatorProps, 'visible'>>
     const lastIndex = positionOrder.length - 1;
     if (event.ctrlKey) {
       if (index === 0) {
-        setPosition(positionOrder[lastIndex])
+        setPosition(positionOrder[lastIndex]);
         return;
       }
       setPosition(positionOrder[index - 1]);
@@ -132,19 +124,19 @@ const InternalBreakpointIndicator: FC<Omit<BreakpointIndicatorProps, 'visible'>>
       return;
     }
     setPosition(positionOrder[index + 1]);
-  }
+  };
 
   return (
     <div
-      onClick={onClick}
       className={className}
+      onClick={onClick}
       style={{
         backgroundColor,
         border: `2px solid ${color}`,
         color,
+        cursor: 'pointer',
         padding: '0 1em',
         position: 'fixed',
-        cursor: 'pointer',
         zIndex: 99999,
         ...placementsByPosition[position],
         ...style,
@@ -154,3 +146,7 @@ const InternalBreakpointIndicator: FC<Omit<BreakpointIndicatorProps, 'visible'>>
     </div>
   );
 };
+
+export const BreakpointIndicator: FC<BreakpointIndicatorProps> = ({ visible = true, ...rest }) => (
+  visible ? <InternalBreakpointIndicator {...rest} /> : null
+);
