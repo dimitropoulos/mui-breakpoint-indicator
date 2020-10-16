@@ -5,7 +5,6 @@
     "module": "commonjs",
     "strict": true,
     "declaration": false,
-    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "jsx": "react"
   },

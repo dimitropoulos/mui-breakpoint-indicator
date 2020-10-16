@@ -1,6 +1,6 @@
 {
   "name": "mui-breakpoint-indicator",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "shows you your current material-ui breakpoint. tiny. allows default position setting.",
   "main": "lib/index.js",
   "author": "Dimitri Mitropoulos <dimitrimitropoulos@gmail.com>",
