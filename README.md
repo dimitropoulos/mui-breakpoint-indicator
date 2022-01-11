@@ -1,4 +1,4 @@
-# Material-UI Breakpoint Indicator
+# MUI Breakpoint Indicator
 
 <div style="
   display: flex;
@@ -14,35 +14,31 @@
 </div>
 
 
-When developing responsive applications with material-ui, it's often helpful to be able to easily visualize the current breakpoint.  Enter, `<BreakpointIndicator />`.
+When developing responsive applications with [mui](https://mui.com/), it's often helpful to be able to easily visualize the current breakpoint.  Enter, `<BreakpointIndicator />`.
 
 ## How does it work?
 
-You can simply import the component at the top level of your app, _just_ after `material-ui`'s `ThemeProvider` (shown below with `redux` as well):
+You can simply import the component at the top level of your app, _just_ after `mui`'s `ThemeProvider` (shown below with `redux` as well):
 
 ```tsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { render } from 'react-dom';
+import { ThemeProvider, CssBaseline } from '@mui/material';
+
 import { theme } from './path/to/my/theme';
 import { MyApp } from './path/to/MyApp';
-import { configureStore } from './store/configureStore';
-import { Provider } from 'react-redux';
 import { BreakpointIndicator } from 'mui-breakpoint-indicator';
 
 const store = configureStore();
 
-ReactDOM.render(
-  <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <CSSBaseline />
-      <BreakpointIndicator />
-      <MyApp />
-    </ThemeProvider>
-  </Provider>,
-  document.querySelector('#root'),
+const root = (
+  <ThemeProvider theme={theme}>
+    <CSSBaseline />
+    <BreakpointIndicator />
+    <MyApp />
+  </ThemeProvider>
 );
+
+ReactDOM.render(root, document.querySelector('#root'));
 ```
 
 ## How can it be configured?
@@ -119,6 +115,6 @@ You can ctrl+click the indicator to rotate it counter-clockwise.
 
 > **NOTE:** When you refresh or rerender your app it will revert to whatever the `position` prop is set to (or the default, `top-center` if none is set), so be sure to just set the `position` prop if you want it to always be in a particular area of the screen.
 
-## Can I use this if I'm not using Material-UI?
+## Can I use this if I'm not using MUI?
 
-No.  At this time, this component is directly tied to some material-ui underpinnings.
+No.  At this time, this component is directly tied to some mui underpinnings.

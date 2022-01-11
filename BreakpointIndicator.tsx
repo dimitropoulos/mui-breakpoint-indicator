@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { CSSProperties, FC, useState, MouseEventHandler } from 'react';
 import { hsl, readableColor } from 'polished';
-import { Theme, useTheme, useMediaQuery } from '@material-ui/core';
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { Theme, useTheme, useMediaQuery, Breakpoint } from '@mui/material';
 import { reduce, reverse } from 'ramda';
 
 /**
