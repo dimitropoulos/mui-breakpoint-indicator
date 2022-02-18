@@ -87,7 +87,7 @@ const debugMode = useSelector(selectDebugMode);
 
 return (
   <div>
-    <BreakpointIndicator debugMode={debugMode} />
+    <BreakpointIndicator visible={debugMode} />
     <MyApp />
   <div>
 )
